@@ -1,0 +1,70 @@
+{
+  "kernel_schema_version": "ask-tessa-kernel-v1",
+  "kernel_id": "F8-LIVE",
+  "kernel_version": "1.0.0",
+  "engine": "f8_dart_v1",
+  "compiler_release_id": "pc-v1.1-hardened-qcontent-q18q20-f8-reasonqmo-readiness-20260818",
+  "compiler_source": "pc_v11_oracle_port_variant_f8.dart",
+  "compiler_sha256": "42a2e4d55c5d96f44b52192c3743e125714e63fa1070dd052739caafae6f58b9",
+  "objective_stage": {
+    "instruction": "Lock the real-world outcome that would count as this request being successfully handled from the user perspective. Current F8-LIVE lock is executed inside the frozen F8 Dart compiler and is not silently improved here.",
+    "override_lock": false,
+    "notes": "F8-LIVE uses compiler-internal objective lock. F9 may set override_lock and a new instruction without APK rebuild of this host."
+  },
+  "qmo_stage": {
+    "instruction": "Given the user's cleaned instruction, the locked objective, and relevant known context, evaluate scope in this order and do not skip directly to the literal requested transaction. A. OBJECTIVE CONTINUITY: Does this turn semantically update, approve, correct, cancel, fail, reschedule, constrain, or add material information to an identifiable ongoing objective? If the turn clearly belongs to an objective that requires coordinated dependent work, choose MANAGED_OBJECTIVE. Do not require the words mission, package, continue, or resume. Do not treat the new sentence as an unrelated fresh single operation. B. COMMITMENT CONSEQUENCE: When the visible request creates, records, changes, or acknowledges a real-world commitment or event, ask whether after the literal transaction succeeds, materially necessary obligations would still remain before that commitment can reasonably succeed. If yes and those obligations require coordinated work, choose MANAGED_OBJECTIVE. Do not assume every calendar event is managed; the consequence must be real and material. When the locked objective records a real-world commitment involving the user or a person the user is responsible for, ask: after the literal calendar/event operation succeeds, is there still a materially necessary attendance, accompaniment, transportation, preparation, custody, coordination, or readiness obligation that must be satisfied for the real-world commitment itself to succeed? If yes, and at least two dependent pieces of work must remain coordinated, choose MANAGED_OBJECTIVE. If no, this test does not choose MANAGED_OBJECTIVE. Do not assume that a child, an orientation, a remote city, or a family event is managed. The deciding factor is whether the locked real-world objective creates material dependent obligations that remain after the literal transaction. A routine local calendar event with no material dependent obligation remains SINGLE_OPERATION. A remote commitment involving the user or someone the user is responsible for, where successful attendance or readiness requires coordinated supporting work, is MANAGED_OBJECTIVE. A calendar entry about someone else that creates no responsibility or dependent work for the user remains SINGLE_OPERATION. C. BLOCKER / FAILURE EFFECT: A missing fact, approval requirement, provider failure, cancellation, schedule change, or unresolved dependency changes the state of an objective; it does not erase the objective's scope. If the objective is already multi-step or coordinated, keep MANAGED_OBJECTIVE and represent the issue as a known_unknown, child clarification, BLOCKED_ON_USER, HOLD, OPEN, PREPARED, or cancel/unwind work. Do not convert a managed objective to SINGLE_OPERATION merely because one fact is unresolved or one child action failed. PRECONDITION TO SUCCESS: Before choosing SINGLE_OPERATION, ask: after the literal requested transaction is completed, are there materially necessary prerequisites, preparation, coordination, readiness conditions, dependent deliveries, accompaniment, handoffs, or follow-through that must still occur for the locked real-world objective itself to succeed? If yes, and those obligations require two or more dependent pieces of work to remain coordinated, choose MANAGED_OBJECTIVE. If no, continue evaluating SINGLE_OPERATION. This test is not limited to travel. A local routine appointment that requires nothing beyond recording it remains SINGLE_OPERATION. A commitment whose successful delivery, hosting, installation, procedure, service, or handoff still depends on unresolved readiness, materials, access, accompaniment, dependent delivery, or follow-through is MANAGED_OBJECTIVE. Do not classify from the nouns demo, doctor, contractor, service, delivery, meeting, presentation, or appointment. The deciding issue is whether literal completion leaves material success prerequisites unresolved. READINESS TO SUCCEED: Before concluding SINGLE_OPERATION, ask: after the literal requested transaction is completed, does successful fulfillment of the locked commitment still require materially necessary readiness work such as preparation, decision context, prerequisite information, required materials, participant coordination, handoff state, or other work that must remain connected to the commitment? If yes, and successful completion requires two or more materially dependent pieces of work to remain coordinated, choose MANAGED_OBJECTIVE. If no, continue evaluating SINGLE_OPERATION. The key test is not whether preparation would be helpful. The test is whether omission of the readiness work would materially reduce the chance that the locked objective can actually be completed successfully. Do not classify as managed merely because an event could benefit from notes, an agenda, reminders, extra research, convenience, generic preparation, or optional follow-up. A routine internal meeting where calendar placement fully satisfies the requested outcome remains SINGLE_OPERATION. A commitment whose success condition still depends on required decision context, required materials, required participant coordination, required handoff state, or other concrete readiness tied to that success condition is MANAGED_OBJECTIVE. Do not implement event-type nouns as triggers. D. ORDINARY SINGLE-OPERATION SUFFICIENCY: Only after A, B, C, the precondition-to-success test, and the readiness-to-succeed test, choose SINGLE_OPERATION when one independent operation can fully and responsibly satisfy the locked objective and no materially necessary dependent obligation remains. Keep SINGLE_OPERATION for a simple reminder, call, email, ordinary local calendar event, one-shot summary, explanation or analysis, planning-only request, draft-only request, or unrelated tasks in one message, unless context proves otherwise. A materially necessary dependent obligation is work whose omission would cause the locked objective to materially fail, stall, or remain substantially incomplete. MANAGED_OBJECTIVE still requires that one independent operation is not sufficient, at least one concrete remaining material obligation exists, and coordination is required. Do not classify from length, formatting, sentence count, city names, travel vocabulary, meeting vocabulary, multiple nouns, dates or times alone, emotional intensity, or several unrelated asks. Do not invent unsupported context or optional work.",
+    "producer": "spacexai_live"
+  },
+  "schemas": {
+    "qmo_output_fields": [
+      "scope",
+      "literal_operation",
+      "single_operation_sufficient",
+      "remaining_material_obligations",
+      "coordination_required",
+      "reason",
+      "confidence"
+    ]
+  },
+  "validation": {
+    "managed_requires": {
+      "scope": "MANAGED_OBJECTIVE",
+      "single_operation_sufficient": false,
+      "coordination_required": true,
+      "remaining_material_obligations_min": 1
+    },
+    "null_raw_defaults_to": "SINGLE_OPERATION"
+  },
+  "node_configuration": {
+    "engine": "f8_dart_v1",
+    "notes": "Node order/walk remains the frozen F8 compiler until a later engine is declared compatible."
+  },
+  "package_planning": {
+    "instruction": "Given this locked objective and known context, identify the minimum necessary component operations and dependency relationships required to advance the objective. Do not add optional lifestyle enhancements unless they materially support success."
+  },
+  "model_profile": {
+    "id": "spacexai-grok-4.6-qmo-v1",
+    "producer": "spacexai_live",
+    "provider": "SpaceXAI",
+    "model": "grok-4.6",
+    "endpoint": "https://api.x.ai/v1/chat/completions",
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "seed": 42,
+    "timeout_ms": 180000,
+    "retry_count": 2,
+    "retry_backoff_ms": [2000, 4000],
+    "max_output_tokens": 4096,
+    "structured_schema_mode": "json_schema_strict",
+    "response_format_mode": "json_schema_strict"
+  },
+  "compatibility": {
+    "min_host_version": "1.0.0",
+    "supported_engines": [
+      "f8_dart_v1"
+    ]
+  },
+  "semantic_hashes": {
+    "compiler_sha256": "42a2e4d55c5d96f44b52192c3743e125714e63fa1070dd052739caafae6f58b9"
+  }
+}
